@@ -1,19 +1,27 @@
+import Layout from "../components/Layout";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard";
-import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
 function HomePage() {
   return (
-    <div style={{ padding: "20px" }}>
-      <Grid container spacing={2} justifyContent="center">
+    <Layout>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: 2,
+          mt: 2,
+        }}
+      >
         {products.map((product) => (
-          <Grid item key={product.id}>
-            <ProductCard product={product} />
-          </Grid>
+          <ProductCard key={product.id} product={product} />
         ))}
-      </Grid>
-    </div>
+      </Box>
+    </Layout>
   );
 }
 
 export default HomePage;
+
