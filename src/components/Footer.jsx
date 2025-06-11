@@ -4,14 +4,18 @@ function Footer() {
   return (
     <Box
       component="footer"
+      aria-label="Site Footer"
       sx={{
-        mt: 5,
-        py: 3,
-        textAlign: "center",
+        width: "100%",
         backgroundColor: "#f5f5f5",
+        borderTop: "1px solid #ddd",
+        textAlign: "center",
+        py: 2,
       }}
     >
-      <Typography variant="body2">© 2025 MyShop. All rights reserved.</Typography>
+      <Typography variant="body2" color="text.secondary">
+        © 2025 MyShop. All rights reserved.
+      </Typography>
     </Box>
   );
 }
