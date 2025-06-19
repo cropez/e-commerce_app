@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/Header';
-import Authorization from "./Authorization";
-import Registration from "./registration"; 
+import React, { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Header from "./components/Header";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUP";
 import ShoppingCart from "./ShoppingCart";
-import Profile from "./Profile";
-import Catalog from "./Catalog";
-import Footer from './components/Footer';
+import Profile from "./pages/Profilepage";
+import MainPage from "./pages/Mainpage";
+import Footer from "./components/Footer";
 import { Box } from "@mui/material";
+import Catalog from "./pages/catalog";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -15,8 +16,13 @@ function App() {
 
   const addToCart = (product) => {
     setCart((prevCart) => {
-      const newQuantity = prevCart[product.title] ? prevCart[product.title].quantity + 1 : 1;
-      return { ...prevCart, [product.title]: { ...product, quantity: newQuantity } };
+      const newQuantity = prevCart[product.title]
+        ? prevCart[product.title].quantity + 1
+        : 1;
+      return {
+        ...prevCart,
+        [product.title]: { ...product, quantity: newQuantity },
+      };
     });
   };
 
@@ -39,22 +45,42 @@ function App() {
   };
 
   return (
-    <Box sx={{
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column",
-    }}>
-      <Header isAuth={isAuth} logout={logout} cartSize={Object.keys(cart).length} />
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <Header
+        isAuth={isAuth}
+        logout={logout}
+        cartSize={Object.keys(cart).length}
+      />
       <Box sx={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={isAuth ? <Navigate to="/catalog" /> : <Authorization login={login} />} />
-          <Route path="/sign-up" element={isAuth ? <Navigate to="/catalog" /> : <Registration />} />
+          <Route
+            path="/"
+            element={
+              isAuth ? <Navigate to="/MainPage" /> : <Login login={login} />
+            }
+          />
+          <Route
+            path="/sign-up"
+            element={isAuth ? <Navigate to="/MainPage" /> : <SignUp />}
+          />
           <Route path="/catalog" element={<Catalog addToCart={addToCart} />} />
-          <Route path="/cart" element={<ShoppingCart cart={cart} removeFromCart={removeFromCart} />} />
+          <Route
+            path="/cart"
+            element={
+              <ShoppingCart cart={cart} removeFromCart={removeFromCart} />
+            }
+          />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/MainPage" element={<MainPage />} />
         </Routes>
       </Box>
-      <Footer/>
+      <Footer />
     </Box>
   );
 }

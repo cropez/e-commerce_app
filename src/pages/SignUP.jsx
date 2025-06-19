@@ -14,7 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 // You can customize your theme here if needed
 const theme = createTheme();
 
-export default function Registration() {
+export default function SignUp() {
   const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({

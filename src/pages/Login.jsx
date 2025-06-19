@@ -16,7 +16,7 @@ const theme = createTheme();
 const EMAIL = 'test';
 const PASSWORD = 'test';
 
-export default function Authorization() {
+export default function Login() {
   const navigate = useNavigate();
 
   const [email, setEmail] = React.useState('');
@@ -58,7 +58,7 @@ export default function Authorization() {
       if (remember) {
         window.localStorage.setItem('auth', '1');
       }
-      navigate('/catalog');
+      navigate('/MainPage');
     } else {
       setLoading(false);
     }
@@ -78,7 +78,7 @@ export default function Authorization() {
             }}
           >
             <Typography component="h1" variant="h5">
-              Authorization
+              Login
             </Typography>
             <Box
               component="form"

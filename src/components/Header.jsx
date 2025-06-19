@@ -22,7 +22,7 @@ function Header({ isAuth, logout, cartSize }) {
           </Link>
         </Typography>
         <Box sx={{ display: "flex", gap: 2 }}>
-          {["GPU", "CPU", "New Arrivals", "Sale", "Our Story"].map((text) => (
+          {[ "Catalog", "New Arrivals", "Sale", "Our Story"].map((text) => (
             <Button
               key={text}
               component={Link}
