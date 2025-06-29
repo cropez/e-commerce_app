@@ -9,6 +9,7 @@ import MainPage from "./pages/Mainpage";
 import Footer from "./components/Footer";
 import { Box } from "@mui/material";
 import Catalog from "./pages/catalog";
+import Story from "./pages/Ourstory";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -59,25 +60,13 @@ function App() {
       />
       <Box sx={{ flex: 1 }}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              isAuth ? <Navigate to="/MainPage" /> : <Login login={login} />
-            }
-          />
-          <Route
-            path="/sign-up"
-            element={isAuth ? <Navigate to="/MainPage" /> : <SignUp />}
-          />
+          <Route path="/" element={isAuth ? <Navigate to="/MainPage" /> : <Login login={login} /> } />
+          <Route path="/sign-up" element={isAuth ? <Navigate to="/MainPage" /> : <SignUp />}/>
           <Route path="/catalog" element={<Catalog addToCart={addToCart} />} />
-          <Route
-            path="/cart"
-            element={
-              <ShoppingCart cart={cart} removeFromCart={removeFromCart} />
-            }
-          />
+          <Route path="/cart" element={<ShoppingCart cart={cart} removeFromCart={removeFromCart} /> } />
           <Route path="/profile" element={<Profile />} />
           <Route path="/MainPage" element={<MainPage />} />
+          <Route path="/our-story" element={<Story />} />
         </Routes>
       </Box>
       <Footer />
